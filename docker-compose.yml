@@ -1,0 +1,16 @@
+version: "3.8"  # Define the Docker Compose file format version
+
+services:       # Define the services (containers)
+  user-service: # Name of the service
+    build:      # Build instructions
+      context: ./services/user-service  # Path to the Dockerfile
+    ports:
+      - "3000:3000"  # Map port 3000 of the container to 3000 on the host
+    environment:
+      - NODE_ENV=production  # environment variable
+    volumes:
+      - ./services/user-service:/usr/src/app  # Mount local directory for development purposes
+
+networks:        # Define networks
+  default:
+    driver: bridge
