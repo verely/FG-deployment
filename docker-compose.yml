@@ -7,7 +7,11 @@ services:       # Define the services (containers)
     ports:
       - "3000:3000"  # Map port 3000 of the container to 3000 on the host
     environment:
-      - NODE_ENV=production  # environment variable
+      - PORT=${USER_PORT}
+      - NODE_ENV=dev
+      - CRYPT_KEY=${USER_CRYPT_KEY}
+      - DB_NAME=${USER_DB_NAME}
+      - MONGO_URL=${USER_MONGO_URL}
     volumes:
       - ./services/user-service:/usr/src/app  # Mount local directory for development purposes
 
